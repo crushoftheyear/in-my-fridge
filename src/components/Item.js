@@ -1,11 +1,11 @@
 import React from 'react'
 
-export const Item = () => {
+export const Item = ({ icon, desc, quantity }) => {
   return (
     <div>
-      <span role="img" aria-label="">🥥</span>
-      <span>desc</span>
-      <span>[2]</span>
+      <span role="img" aria-label="">{icon}</span>
+      <span>{desc}</span>
+      <span>[{quantity}]</span>
       <button type="button">x</button>
     </div>
   )
