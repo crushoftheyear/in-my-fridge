@@ -1,16 +1,25 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components/macro'
 
+import { fridge } from 'reducers/fridge'
+
 const AddContainer = styled.form``
 
 export const AddItem = () => {
+  const dispatch = useDispatch()
   const [inputValue, setInputValue] = useState('')
 
   const submitHandler = (e) => {
     e.preventDefault()
-    // Dispatch
+    dispatch(fridge.actions.addItem({
+      newItem: {
+        desc: inputValue.charAt(0).toUpperCase() + inputValue.slice(1),
+        quantity: 1
+      }
+    }))
     setInputValue('')
   }
 
