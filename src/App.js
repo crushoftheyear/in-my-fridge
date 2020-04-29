@@ -9,7 +9,9 @@ import { AddItem } from 'components/AddItem'
 
 import { fridge } from 'reducers/fridge'
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  margin: 2rem;
+`
 
 const reducer = combineReducers({
   fridge: fridge.reducer

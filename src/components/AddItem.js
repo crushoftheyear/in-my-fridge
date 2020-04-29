@@ -3,11 +3,13 @@ import { useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components/macro'
-import { SelectInput } from './SelectInput'
 
 import { fridge } from 'reducers/fridge'
+import { SelectInput } from './SelectInput'
 
-const AddContainer = styled.form``
+const AddContainer = styled.form`
+  margin-top: 2rem;
+`
 
 export const AddItem = () => {
   const dispatch = useDispatch()
@@ -43,8 +45,7 @@ export const AddItem = () => {
         id="selectCategory"
         options={categories}
         state={category}
-        setState={setCategory}
-      />
+        setState={setCategory} />
 
       <button className="add-btn" type="submit" aria-label="Click to add item">
         <FontAwesomeIcon icon={faPlus} />
