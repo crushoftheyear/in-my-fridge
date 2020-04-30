@@ -21,7 +21,8 @@ export const FridgeItems = () => {
         <Item
           key={item.desc}
           icon={item.icon}
-          desc={item.desc}
+          desc={item.description}
+          cat={item.category}
           quantity={item.quantity} />
       ))}
 
