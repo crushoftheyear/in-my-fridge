@@ -4,7 +4,7 @@ export const fridge = createSlice({
   name: 'fridge',
   initialState: {
     items: [
-      { icon: '☁️', description: 'cloud', category: 'Other', quantity: 4 }
+      { icon: '☁️', description: 'Cloud', category: 'Other', quantity: 4 }
     ]
   },
   reducers: {
