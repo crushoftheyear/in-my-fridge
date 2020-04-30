@@ -12,24 +12,24 @@ const AddContainer = styled.form`
 `
 
 export const AddItem = () => {
-  const dispatch = useDispatch()
-  const [inputValue, setInputValue] = useState('')
+  const [desc, setDesc] = useState('')
   const [cat, setCat] = useState('')
-
-  // Select options
   const categories = ['Cheese', 'Drinks', 'Protein', 'Sauces', 'Sweets', 'Vegetables', 'Other']
+
+  const dispatch = useDispatch()
 
   // Dispatch addItem w/ values from input fields
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(fridge.actions.addItem({
       newItem: {
-        description: inputValue.charAt(0).toUpperCase() + inputValue.slice(1),
-        category: cat,
-        quantity: 1
+        id: Date.now(),
+        description: desc,
+        category: cat
       }
     }))
-    setInputValue('')
+    setDesc('')
+    setCat('')
   }
 
   return (
@@ -37,8 +37,8 @@ export const AddItem = () => {
     <AddContainer className="add-item" onSubmit={submitHandler}>
       <input
         type="text"
-        onChange={(e) => setInputValue(e.target.value)}
-        value={inputValue}
+        onChange={(e) => setDesc(e.target.value)}
+        value={desc}
         placeholder="Add item"
         aria-label="Type an item"
         required />

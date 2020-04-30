@@ -19,11 +19,8 @@ export const FridgeItems = () => {
 
       {fridgeItems.map((item) => (
         <Item
-          key={item.desc}
-          icon={item.icon}
-          desc={item.description}
-          cat={item.category}
-          quantity={item.quantity} />
+          key={item.id}
+          item={item} />
       ))}
 
     </FridgeContainer>
