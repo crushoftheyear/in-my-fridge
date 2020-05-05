@@ -12,16 +12,14 @@ const ItemContainer = styled.div`
   }
 `
 export const Item = (props) => {
-  const { id, icon, description, category } = props.item;
+  const { id, description, category } = props.item;
 
   const dispatch = useDispatch()
 
   return (
     <ItemContainer>
-      <span role="img" aria-label="">{icon}</span>
       <span>{description.charAt(0).toUpperCase() + description.slice(1)}</span>
       <span>{category}</span>
-      {/* <span>[{quantity}]</span> */}
       <button onClick={() => { dispatch(fridge.actions.removeItem(id)) }} type="button">x</button>
     </ItemContainer>
   )
