@@ -2,15 +2,10 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import styled from 'styled-components/macro'
 
 import { fridge } from 'reducers/fridge'
 import { TextInput } from './TextInput'
 import { SelectInput } from './SelectInput'
-
-const AddContainer = styled.form`
-  margin-top: 2rem;
-`
 
 export const AddItem = () => {
   const [desc, setDesc] = useState('')
@@ -36,7 +31,7 @@ export const AddItem = () => {
 
   return (
 
-    <AddContainer className="add-item" onSubmit={submitHandler}>
+    <form className="add-item" onSubmit={submitHandler}>
       <TextInput
         label=""
         id=""
@@ -54,7 +49,7 @@ export const AddItem = () => {
       <button className="add-btn" type="submit" aria-label="Click to add item">
         <FontAwesomeIcon icon={faPlus} />
       </button>
-    </AddContainer>
+    </form>
 
   )
 }

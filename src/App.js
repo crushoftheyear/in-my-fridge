@@ -1,17 +1,15 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { createStore, combineReducers } from '@reduxjs/toolkit'
-import styled from 'styled-components/macro'
-import 'normalize.css'
 
+import { Header } from 'components/Header'
 import { FridgeItems } from 'components/FridgeItems'
 import { AddItem } from 'components/AddItem'
 
 import { fridge } from 'reducers/fridge'
 
-const Wrapper = styled.div`
-  margin: 2rem;
-`
+import 'normalize.css'
+import 'sass/app.scss'
 
 const reducer = combineReducers({
   fridge: fridge.reducer
@@ -41,10 +39,13 @@ store.subscribe(() => {
 export const App = () => {
   return (
     <Provider store={store}>
-      <Wrapper>
+      <div className="wrapper">
+
+        <Header />
         <FridgeItems />
         <AddItem />
-      </Wrapper>
+
+      </div>
     </Provider>
   )
 }
