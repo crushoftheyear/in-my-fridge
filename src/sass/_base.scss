@@ -4,8 +4,11 @@
   box-sizing: border-box;
 }
 
+html, body, #root, .wrapper {
+  height: 100%;
+}
+
 body {
-  overflow: hidden;
   margin: 0;
   color: $colorDark;
   font-size: 16px;
@@ -58,7 +61,6 @@ button {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 80px 2fr 1fr;
-  height: 100vh;
 }
 
 .fridge-container {
