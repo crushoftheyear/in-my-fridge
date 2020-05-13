@@ -6,7 +6,7 @@ export const FridgeItems = () => {
   const fridgeItems = useSelector((state) => state.fridge.items)
 
   return (
-    <section>
+    <section className="fridge-container">
 
       {fridgeItems.map((item) => (
         <Item

@@ -30,26 +30,26 @@ export const AddItem = () => {
   }
 
   return (
+    <section className="add-item">
+      <form onSubmit={submitHandler}>
+        <TextInput
+          label="Add item"
+          id=""
+          placeholder="Add item"
+          state={desc}
+          setState={setDesc} />
 
-    <form className="add-item" onSubmit={submitHandler}>
-      <TextInput
-        label=""
-        id=""
-        placeholder="Add item"
-        state={desc}
-        setState={setDesc} />
+        <SelectInput
+          label=""
+          id="selectCategory"
+          options={categories}
+          state={cat}
+          setState={setCat} />
 
-      <SelectInput
-        label=""
-        id="selectCategory"
-        options={categories}
-        state={cat}
-        setState={setCat} />
-
-      <button className="add-btn" type="submit" aria-label="Click to add item">
-        <FontAwesomeIcon icon={faPlus} />
-      </button>
-    </form>
-
+        <button className="add-btn" type="submit" aria-label="Click to add item">
+          <FontAwesomeIcon icon={faPlus} />
+        </button>
+      </form>
+    </section>
   )
 }

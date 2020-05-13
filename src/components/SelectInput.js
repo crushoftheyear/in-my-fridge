@@ -1,13 +1,11 @@
 import React from 'react'
 
-export const SelectInput = ({ label, id, options, state, setState }) => {
+export const SelectInput = ({ label, options, state, setState }) => {
   return (
     <>
-      <label htmlFor={id}>{label}</label>
-
       <select
         onChange={(e) => setState(e.target.value)}
-        id={id}
+        aria-label={label}
         value={state}
         required>
         <option value="" disabled>Select</option> {/* First item in list */}
