@@ -20,8 +20,7 @@ export const AddItem = () => {
     e.preventDefault()
     dispatch(fridge.actions.addItem({
       newItem: {
-        id: Date.now(),
-        description: desc,
+        name: desc,
         category: cat
       }
     }))
