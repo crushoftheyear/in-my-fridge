@@ -32,3 +32,21 @@ export const fetchGroceries = (path) => {
       })
   }
 }
+
+// TODO: Add/POST
+export const addGrocery = (name, cat) => {
+  return (dispatch) => {
+    dispatch(ui.actions.setLoading(true))
+    fetch(`https://my-fridge-api.herokuapp.com/groceries`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: name, cat
+      })
+      .then((res) => res.json())
+      .then((json) => {
+        window.location.reload()
+        dispatch(ui.actions.setLoading(false))
+      })
+  }
+}

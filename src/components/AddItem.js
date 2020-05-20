@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -15,9 +15,17 @@ export const AddItem = () => {
 
   const dispatch = useDispatch()
 
+  // TODO: Call addGrocery from reducer w/ useEffect
+
+  // useEffect(() => {
+  //   dispatch(addGrocery(desc, cat))
+  // }, [dispatch])
+
+
   // Dispatch addItem w/ values from input fields
   const submitHandler = (e) => {
     e.preventDefault()
+
     dispatch(fridge.actions.addItem({
       newItem: {
         name: desc,
