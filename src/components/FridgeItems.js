@@ -1,22 +1,12 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
 import { Item } from './Item'
-import { fetchGroceries } from 'reducers/fridge'
 
-export const FridgeItems = () => {
-
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(fetchGroceries('/groceries'))
-  }, [dispatch])
-
-  const fridgeItems = useSelector((state) => state.fridge.fridge)
+export const FridgeItems = ({ groceries }) => {
 
   return (
     <section className="fridge-container">
 
-      {fridgeItems.map((item) => (
+      {groceries.map((item) => (
         <Item
           key={item._id}
           item={item} />

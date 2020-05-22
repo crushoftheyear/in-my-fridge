@@ -1,39 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
-import { fridge } from 'reducers/fridge'
 import { TextInput } from './TextInput'
 import { SelectInput } from './SelectInput'
 
-export const AddItem = () => {
-  const [desc, setDesc] = useState('')
-  const [cat, setCat] = useState('')
+export const AddItem = ({ apiUrl, setGroceries }) => {
+  const [name, setName] = useState('')
+  const [category, setCategory] = useState('')
 
   const categories = ['Cheese', 'Drinks', 'Protein', 'Sauces', 'Sweets', 'Vegetables', 'Other']
 
-  const dispatch = useDispatch()
-
-  // TODO: Call addGrocery from reducer w/ useEffect
-
-  // useEffect(() => {
-  //   dispatch(addGrocery(desc, cat))
-  // }, [dispatch])
-
-
-  // Dispatch addItem w/ values from input fields
   const submitHandler = (e) => {
     e.preventDefault()
 
-    dispatch(fridge.actions.addItem({
-      newItem: {
-        name: desc,
-        category: cat
+    const itemBody = JSON.stringify({ name, category }, (key, value) => {
+      if (value) {
+        return value
+      } else {
+        return undefined
       }
-    }))
-    setDesc('')
-    setCat('')
+    })
+
+    fetch(`${apiUrl}/groceries`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: itemBody
+    }).then(() => {
+      window.location.reload()
+    })
   }
 
   return (
@@ -43,15 +38,15 @@ export const AddItem = () => {
           label="Add item"
           id=""
           placeholder="Add item"
-          state={desc}
-          setState={setDesc} />
+          state={name}
+          setState={setName} />
 
         <SelectInput
           label=""
           id="selectCategory"
           options={categories}
-          state={cat}
-          setState={setCat} />
+          state={category}
+          setState={setCategory} />
 
         <button className="add-btn" type="submit" aria-label="Click to add item">
           <FontAwesomeIcon icon={faPlus} />

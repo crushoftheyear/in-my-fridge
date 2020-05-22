@@ -1,34 +1,39 @@
-import React from 'react'
-import { Provider } from 'react-redux'
-import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import React, { useState, useEffect } from 'react'
 
 import { Header } from 'components/Header'
 import { FridgeItems } from 'components/FridgeItems'
 import { AddItem } from 'components/AddItem'
 
-import { ui } from 'reducers/ui'
-import { fridge } from 'reducers/fridge'
-
 import 'normalize.css'
 import 'sass/app.scss'
 
-const reducer = combineReducers({
-  ui: ui.reducer,
-  fridge: fridge.reducer
-})
-
-const store = configureStore({ reducer })
-
 export const App = () => {
+  const apiUrl = 'https://my-fridge-api.herokuapp.com'
+  const [loading, setLoading] = useState(true)
+  const [groceries, setGroceries] = useState([])
+
+  useEffect(() => {
+    setLoading(true)
+
+    fetch(`${apiUrl}/groceries`)
+      .then(res => res.json())
+      .then(data => {
+        setTimeout(() => { // Show loader for a longer time
+          setGroceries(data)
+          setLoading(false)
+        }, 1000)
+      })
+  }, [])
+
+  console.log(groceries)
+
   return (
-    <Provider store={store}>
-      <div className="wrapper">
+    <div className="wrapper">
 
-        <Header />
-        <FridgeItems />
-        <AddItem />
+      <Header />
+      <FridgeItems groceries={groceries} />
+      <AddItem setGroceries={setGroceries} apiUrl={apiUrl} />
 
-      </div>
-    </Provider>
+    </div>
   )
 }
