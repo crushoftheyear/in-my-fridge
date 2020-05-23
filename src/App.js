@@ -25,13 +25,11 @@ export const App = () => {
       })
   }, [])
 
-  console.log(groceries)
-
   return (
     <div className="wrapper">
 
       <Header />
-      <FridgeItems groceries={groceries} />
+      <FridgeItems groceries={groceries} apiUrl={apiUrl} />
       <AddItem setGroceries={setGroceries} apiUrl={apiUrl} />
 
     </div>
