@@ -26,9 +26,10 @@ export const AddItem = ({ apiUrl, setGroceries }) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: itemBody
-    }).then(() => {
-      window.location.reload()
-    })
+    }).then((res) => res.json())
+      .then((newItem) => {
+        setGroceries((previousItems) => [newItem, ...previousItems])
+      })
   }
 
   return (
