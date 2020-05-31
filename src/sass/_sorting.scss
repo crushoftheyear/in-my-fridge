@@ -1,0 +1,19 @@
+.sorting-container {
+  .radio-btn-container {
+    display: flex;
+    justify-content: space-between;
+
+    @include xsmall {
+      justify-content: flex-start;
+    }
+
+    .radio-btn {
+      &+.radio-btn {
+        margin-left: 2rem;
+      }
+      label {
+        margin-left: .5rem;
+      }
+    }
+  }
+}
